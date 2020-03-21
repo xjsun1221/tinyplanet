@@ -8,7 +8,7 @@ Description: Simplify pdata,volcano_plot and PCA_plot,heatmap_plot ,boxplot
 License: MIT
 Encoding: UTF-8
 LazyData: true
-Imports:
+Imports: 
     dplyr,
     tibble,
     FactoMineR,
@@ -18,5 +18,8 @@ Imports:
     ggplot2,
     VennDiagram
 Suggests: 
-    testthat
-RoxygenNote: 6.1.1
+    testthat,
+    knitr,
+    rmarkdown
+RoxygenNote: 7.0.2
+VignetteBuilder: knitr

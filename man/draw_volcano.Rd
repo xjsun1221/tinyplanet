@@ -4,8 +4,7 @@
 \alias{draw_volcano}
 \title{draw a volcano plot}
 \usage{
-draw_volcano(deg, pvalue_cutoff = 0.05, logFC_cutoff = 1, pkg = 1,
-  adjust = F)
+draw_volcano(deg, pvalue_cutoff = 0.05, logFC_cutoff = 1, pkg = 1, adjust = F)
 }
 \arguments{
 \item{deg}{a data.frame created by Differential analysis}

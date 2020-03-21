@@ -1,5 +1,4 @@
-
-library(bioinfor)
 library(testthat)
+library(tinyplanet)
 
-test_check("bioinfor")
+test_check("tinyplanet")

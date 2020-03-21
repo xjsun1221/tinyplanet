@@ -1,3 +1,16 @@
+##' match exp and pd in order
+##'
+##' make exp match with pd in order
+##' @param exp  A numeric matrix export by exprs function
+##' @param pd   A meta data.frame export by pData function
+##' @return make exp match with pd in order
+##' @examples
+##' epmap(exp,pd)
+
+epmap = function(exp,pd){
+  if(!identical(rownames(pd),colnames(exp))) exp = exp[,match(rownames(pd1),colnames(exp))]
+  identical(rownames(pd),colnames(exp))
+}
 ##' count unique values in every colunms for data.frame
 ##'
 ##' in geo analysis,this function can help you simplify pdata, delete columns with unique values,which can't be used as group vector
@@ -27,3 +40,5 @@ dumd <- function(x){
     arrange(desc(count))
   print(df)
 }
+
+
