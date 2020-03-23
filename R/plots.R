@@ -155,7 +155,7 @@ draw_volcano <- function(deg,pvalue_cutoff = 0.05,logFC_cutoff= 1,pkg = 1,adjust
 ##' @author Xiaojie Sun
 ##' @importFrom VennDiagram venn.diagram
 ##' @importFrom ggplotify as.ggplot
-##' @importFrom ggplotify as.grob
+##' @importFrom cowplot as_grob
 ##' @export
 ##' @examples
 ##' Deseq2 = sample(1:100,30);edgeR = sample(1:100,30);limma = sample(1:100,30)
@@ -180,6 +180,6 @@ draw_venn <- function(Deseq2,edgeR,limma,name){
                    cex=1.5,
                    alpha = 0.5,
                    reverse=TRUE)
-  p = as.ggplot(as.grob(p))
+  p = as.ggplot(as_grob(p))
   return(p)
 }
