@@ -4,10 +4,10 @@
 \alias{draw_venn}
 \title{draw a venn plot}
 \usage{
-draw_venn(x, y, z, name)
+draw_venn(Deseq2, edgeR, limma, name)
 }
 \arguments{
-\item{x, y, z}{a character vector ,diffriencial analysis genes by Deseq2 ,edgeR ,limma respectively}
+\item{Deseq2, edgeR, limma}{a character vector ,diffriencial analysis genes by Deseq2 ,edgeR ,limma respectively}
 
 \item{name}{main of the plot}
 }
@@ -18,8 +18,8 @@ a venn plot according to \code{x}, \code{y} and.\code{z} named "name" paramter
 print a venn plot for deg result created by three packages
 }
 \examples{
-x = sample(1:100,30);y = sample(1:100,30);z = sample(1:100,30)
-draw_venn(x,y,z,"test")
+Deseq2 = sample(1:100,30);edgeR = sample(1:100,30);limma = sample(1:100,30)
+draw_venn(Deseq2,edgeR,limma,"test")
 }
 \seealso{
 \code{\link{draw_pca}};\code{\link{draw_volcano}};\code{\link{draw_heatmap}}

@@ -149,22 +149,21 @@ draw_volcano <- function(deg,pvalue_cutoff = 0.05,logFC_cutoff= 1,pkg = 1,adjust
 ##'
 ##' print a venn plot for deg result created by three packages
 ##'
-##' @param x,y,z a character vector ,diffriencial analysis genes by Deseq2 ,edgeR ,limma respectively
+##' @param Deseq2,edgeR,limma a character vector ,diffriencial analysis genes by Deseq2 ,edgeR ,limma respectively
 ##' @param name main of the plot
 ##' @return a venn plot according to \code{x}, \code{y} and.\code{z} named "name" paramter
 ##' @author Xiaojie Sun
 ##' @importFrom VennDiagram venn.diagram
-##' @importFrom grid grid.draw
 ##' @export
 ##' @examples
-##' x = sample(1:100,30);y = sample(1:100,30);z = sample(1:100,30)
-##' draw_venn(x,y,z,"test")
+##' Deseq2 = sample(1:100,30);edgeR = sample(1:100,30);limma = sample(1:100,30)
+##' draw_venn(Deseq2,edgeR,limma,"test")
 ##' @seealso
 ##' \code{\link{draw_pca}};\code{\link{draw_volcano}};\code{\link{draw_heatmap}}
 
-draw_venn <- function(x,y,z,name){
+draw_venn <- function(Deseq2,edgeR,limma,name){
   if(as.numeric(dev.cur())!=1) graphics.off()
-  p = venn.diagram(x= list(Deseq2 = x,edgeR = y,limma = z),
+  p = venn.diagram(x= list(Deseq2 = Deseq2 ,edgeR = edgeR,limma = limma),
                    imagetype ="png",
                    filename=NULL,
                    lwd=1,#圈线粗度
@@ -179,5 +178,6 @@ draw_venn <- function(x,y,z,name){
                    cex=1.5,
                    alpha = 0.5,
                    reverse=TRUE)
-  grid.draw(p)
+  p = as.ggplot(as_grob(p))
+  return(p)
 }
