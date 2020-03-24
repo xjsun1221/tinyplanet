@@ -181,5 +181,6 @@ draw_venn <- function(Deseq2,edgeR,limma,name){
                    alpha = 0.5,
                    reverse=TRUE)
   p = as.ggplot(as_grob(p))
+  file.remove(dir(pattern = ("^VennDiagram.*log$")))
   return(p)
 }
