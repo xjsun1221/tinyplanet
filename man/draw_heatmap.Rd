@@ -4,10 +4,14 @@
 \alias{draw_heatmap}
 \title{draw a heatmap plot}
 \usage{
-draw_heatmap(n, group_list)
+draw_heatmap(n, group_list, scale_before = F, n_cutoff = 2)
 }
 \arguments{
 \item{group_list}{A vector with duplicated character or factor}
+
+\item{scale_before}{logical,if TRUE ,scale before plot,if FALSE,ues scale = "row" param form pheatmap}
+
+\item{n_cutoff}{2 by defalut , scale before plot and set a cutoff,usually 2 or 1.6}
 }
 \value{
 a heatmap plot according to \code{exp} and grouped by \code{group}.

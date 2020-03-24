@@ -42,6 +42,8 @@ if(getRversion() >= "2.15.1")  utils::globalVariables(c("."))
 ##' print a heatmap plot for expression matrix and group by group_list paramter
 ##'
 ##' @inheritParams draw_pca
+##' @param scale_before logical,if TRUE ,scale before plot,if FALSE,ues scale = "row" param form pheatmap
+##' @param n_cutoff 2 by defalut , scale before plot and set a cutoff,usually 2 or 1.6
 ##' @return a heatmap plot according to \code{exp} and grouped by \code{group}.
 ##' @author Xiaojie Sun
 ##' @importFrom pheatmap pheatmap
@@ -62,18 +64,34 @@ if(getRversion() >= "2.15.1")  utils::globalVariables(c("."))
 ##' draw_heatmap(n,group_list)
 ##' @seealso
 ##' \code{\link{draw_pca}};\code{\link{draw_volcano}};\code{\link{draw_venn}}
-draw_heatmap <-  function(n,group_list){
+
+draw_heatmap <-  function(n,group_list,scale_before = F,n_cutoff = 2){
   annotation_col=data.frame(group=group_list)
   rownames(annotation_col)=colnames(n)
-  as.ggplot(pheatmap(n,
-                     show_colnames =F,
-                     show_rownames = F,
-                     scale = "row",
-                     annotation_col=annotation_col,
-                     legend = F,
-                     annotation_legend = F,
-                     annotation_names_col = F
-  ))
+  if(scale_before){
+    n = t(scale(t(n)))
+    n[n>n_cutoff] = n_cutoff
+    n[n< -n_cutoff] = -n_cutoff
+    p = as.ggplot(pheatmap(n,
+                           show_colnames =F,
+                           show_rownames = F,
+                           annotation_col=annotation_col,
+                           legend = F,
+                           annotation_legend = F,
+                           annotation_names_col = F
+    ))
+  }
+  if(!scale_before){
+    p = as.ggplot(pheatmap(n,
+                           show_colnames =F,
+                           show_rownames = F,
+                           scale = "row",
+                           annotation_col=annotation_col,
+                           legend = F,
+                           annotation_legend = F,
+                           annotation_names_col = F))
+  }
+  return(p)
 }
 
 ##' draw a volcano plot
